@@ -1,0 +1,50 @@
+.matrix {
+  margin: 2rem auto;
+  padding: 1rem;
+  width: fit-content;
+  background-color: rgb(255, 255, 186);
+}
+
+table {
+  table-layout: auto;
+  border-spacing: 20px;
+  min-width: 60rem;
+  min-height: 40rem;
+}
+
+td {
+  position: relative;
+  text-shadow: 0 1px 1px rgb(195, 255, 0);
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.26);
+  width: 5rem;
+  max-width: 5rem;
+  word-wrap: break-word;
+  background-color: rgb(255, 255, 135);
+}
+
+td::after {
+  cursor: pointer;
+  content: 'Select';
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 10px;
+  margin: 2px;
+  padding: 2px;
+  background: yellow;
+}
+
+td>div {
+  height: 8rem;
+  overflow-y: auto;
+}
+
+td:hover {
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.26);
+}
+
+td:active {
+  background-color: rgb(253, 253, 119);
+}
