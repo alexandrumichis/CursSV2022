@@ -1,15 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 // @ts-ignore
 import classes from "./Feedback.module.css";
 import Card from "./Card";
 
 const FeedbackInput = props => {
-  const feedbackInputRef = useRef(null);
   const [input, setInput] = useState(null);
 
   const inputHandler = e => {
-    feedbackInputRef.current.value
-      ? setInput(feedbackInputRef.current.value)
+    e.target.value
+      ? setInput(e.target.value)
       : setInput(null);
   };
 
@@ -23,7 +22,6 @@ const FeedbackInput = props => {
       <input
         id="feedback"
         type="text"
-        ref={feedbackInputRef}
         onChange={inputHandler}
       />
       <button
