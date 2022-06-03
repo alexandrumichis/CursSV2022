@@ -8,36 +8,51 @@ function App() {
 
   const [connectedSocket, setConnectedSocket] = useState(null);
   const [matrix, setMatrix] = useState([["", "", ""], ["", "", ""], ["", "", ""]]);
+  const [colorPalette, setColorPalette] = useState([
+    ["#ffff87", "#ffff87", "#ffff87"],
+    ["#ffff87", "#ffff87", "#ffff87"],
+    ["#ffff87", "#ffff87", "#ffff87"]
+  ]);
   const [selected, setSelected] = useState(null);
-  const [submittedFeedback, setSubmittedFeedback] = useState(false);
+  const [feedbackMessage, setFeedbackMessage] = useState("");
 
   useEffect(() => {
     const socket = io();
     setConnectedSocket(socket);
-    socket.on("data", matrix => setMatrix(matrix));
+    socket.on("data", data => {
+      setMatrix(data.serverMatrix);
+      setColorPalette(data.serverColorPalette);
+    });
   }, []);
 
 
   const feedbackHandler = value => {
     if (!value) {
-      console.log("No feedback was introduced!");
+      setFeedbackMessage("No feedback was introduced!");
     } else if (!selected) {
-      console.log("No note was selected!");
+      setFeedbackMessage("No note was selected!");
     } else {
-      setSubmittedFeedback(true);
-      connectedSocket.emit("feedback", { value, selected });
+      setFeedbackMessage("Thank you for your feedback!");
+      connectedSocket.emit("feedback", {
+        value,
+        selected,
+      });
     }
   };
 
   return (
     <React.Fragment>
-      {!submittedFeedback ?
-        <FeedbackInput feedbackHandler={feedbackHandler} /> :
-        <h1
-          style={{ textAlign: "center" }}
-          onClick={() => setSubmittedFeedback(false)}
-        >Thank you for your feedback!</h1>}
-      <Matrix matrix={matrix} selectedHandler={e => setSelected(e.target.id)} />
+      {!feedbackMessage
+        ? <FeedbackInput selected={selected} feedbackHandler={feedbackHandler} />
+        : <h1
+          style={{ textAlign: "center", cursor: "pointer" }}
+          onClick={() => setFeedbackMessage("")}
+        >{feedbackMessage}</h1>}
+      <Matrix
+        matrix={matrix}
+        colorPalette={colorPalette}
+        selectedHandler={id => setSelected(id)}
+      />
     </React.Fragment>
   );
 }
