@@ -26,4 +26,4 @@
 
 `npm run start`
 
-Aplicatia se acceseaza localhost pe portul 3000 (sau pe cel pe care l-ati setat).
+Aplicatia se acceseaza in localhost pe portul 3000 (sau pe cel pe care l-ati setat).
