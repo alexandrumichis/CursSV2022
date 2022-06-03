@@ -12,13 +12,18 @@
 - Partea de client va implementa notiuti de UX pentru a face folosirea ei intuitiva
 
 
-  Rularea aplicatiei se face astfel:
-`
-cd server
-npm i
-npm run devStart
-cd client
-npm i
-npm run start
-`
+  Rularea aplicatiei urmarind aceste comenzi:
+
+`cd server`
+
+`npm i`
+
+`npm run devStart`
+
+`cd client`
+
+`npm i`
+
+`npm run start`
+
 Aplicatie se acceseaza localhost pe portul 3000 (sau pe cel pe care l-ati setat).
