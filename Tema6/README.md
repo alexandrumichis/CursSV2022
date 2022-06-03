@@ -12,7 +12,7 @@
 - Partea de client va implementa notiuti de UX pentru a face folosirea ei intuitiva
 
 
-  Rularea aplicatiei urmarind aceste comenzi:
+  Rularea aplicatiei se face urmarind aceste comenzi:
 
 `cd server`
 
