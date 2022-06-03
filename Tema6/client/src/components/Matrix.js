@@ -26,9 +26,8 @@ const Matrix = props => {
               (<td
                 key={`Column ${colIndex}`}
                 style={{
-                  backgroundColor: activeNote === `${rowIndex}${colIndex}`
-                    ? "#FFFFFF"
-                    : props.colorPalette[rowIndex][colIndex]
+                  backgroundColor: props.colorPalette[rowIndex][colIndex]
+                  , outline: activeNote === `${rowIndex}${colIndex}` && "2px dotted #474747"
                 }}
               ><div id={`${rowIndex}${colIndex}`} onClick={selectedHandler}
               >{value}</div>
